@@ -1,4 +1,4 @@
-import { writeFile } from "fs";
+import { writeFile, mkdirSync } from "fs";
 import { join, resolve } from "path";
 
 import { ISerializedNode } from "../index";
@@ -12,6 +12,7 @@ const createJsonFileAsync = async (siteUrl: string, publicPath: string, node: IS
     };
     const fileJson = JSON.stringify(fileObject);
 
+    mkdirSync(resolve(join(publicPath, node.path)), { recursive: true });
     const filePath = resolve(join(publicPath, node.path, "index.json"));
 
     await writeFile(filePath, fileJson, (err) => {
