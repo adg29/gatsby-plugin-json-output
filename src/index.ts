@@ -78,8 +78,6 @@ const createJsonFiles = async ({
 };
 
 const createJsonFeedFiles = async ({
-  feedMeta,
-  siteUrl,
   nodes,
   nodesPerFeedFile = 100,
   publicPath
