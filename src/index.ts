@@ -108,16 +108,16 @@ const createJsonFeedFiles = async ({
       feedPromises.push(
         new Promise((resolve, reject) => {
           try {
-            const jsonFeed = {
-              ...feedMeta,
-              feed_url: `${siteUrl}/feed-1.json`,
-              home_page_url: siteUrl,
-              items: nodeChunk,
-              next_feed_url: i < nodeChunks.length - 1 ? `${siteUrl}/feed-${i + 2}.json` : null,
-              previous_feed_url: i > 0 ? `${siteUrl}/feed-${i}.json` : null,
-              version: "https://jsonfeed.org/version/1"
-            };
-            writeFileSync(join(publicPath, `feed-${i + 1}.json`), JSON.stringify(jsonFeed), "utf8");
+            // const jsonFeed = {
+            //   ...feedMeta,
+            //   feed_url: `${siteUrl}/feed-1.json`,
+            //   home_page_url: siteUrl,
+            //   items: nodeChunk,
+            //   next_feed_url: i < nodeChunks.length - 1 ? `${siteUrl}/feed-${i + 2}.json` : null,
+            //   previous_feed_url: i > 0 ? `${siteUrl}/feed-${i}.json` : null,
+            //   version: "https://jsonfeed.org/version/1"
+            // };
+            writeFileSync(join(publicPath, `feed-${i + 1}.json`), JSON.stringify(nodeChunk), "utf8");
             resolve();
           } catch (err) {
             reject(err);
